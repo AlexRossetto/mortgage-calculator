@@ -4,11 +4,13 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1"> <!-- displays site properly based on user's device -->
 
+
   <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@200..700&display=swap" rel="stylesheet">
   <link rel="icon" type="image/png" sizes="32x32" href="./assets/images/favicon-32x32.png">
   <script src="https://kit.fontawesome.com/d95f5d52a6.js" crossorigin="anonymous"></script>
+
 
   <title>Frontend Mentor | Mortgage repayment calculator</title>
 
@@ -23,25 +25,30 @@
 <body>
   <main>
       <section>
-        <form action="">
+        <form id="form" action="">
           <div>
             <h3>Mortgage Calculator</h3>
             <h5>Clear All</h5>
           </div>
           <div>
-            <span>Mortgage Amount</span>
+              <span>Mortgage Amount</span>
               <i class="fa fa-user"></i>
-              <input class="input-icon-left" type="number">
+              <input id="mortgageAmount" class="input-icon-left" type="number"></input>
+              <span id="mortgageAmount_error"></span>
           </div>
-          <div>
-            <span>Mortgage term</span>
-            <input class="input-icon-right" type="number">
-            <span>years</span>
-          </div>
-          <div>
-            <span>Interest Rate</span>
-            <input class="input-icon-right" type="float">
-            <span>%</span>
+          <div class="right-icon-container">
+            <div>
+              <span>Mortgage term</span>
+              <input id="mortgageTerm" class="input-icon-right" type="number">
+              <span>years</span>
+              <span id="mortgageTerm_error"></span>
+            </div>
+            <div>
+              <span>Interest Rate</span>
+              <input id="interestRate" class="input-icon-right" type="float">
+              <span>%</span>
+              <span id="interestRate_error"></span>
+            </div>
           </div>
           <div>
             <span>Mortgage Type</span>
@@ -57,9 +64,14 @@
                     Interest Only
                   </label>
                 </div>
+                <span style="display: inline-block;
+                font-size: 10px;
+                color:red;
+                height: 8px;
+                line-height: 0;">This field is required</span>
             </div>
           </div>
-            <button type="button"> 
+            <button type="submit"> 
             <img src = "./assets/images/icon-calculator.svg" alt="My Happy SVG"/>
               Calculate Repayments
             </button>
@@ -84,5 +96,7 @@
     Challenge by <a href="https://www.frontendmentor.io?ref=challenge">Frontend Mentor</a>. 
     Coded by <a href="#">Alexandre Rossetto</a>.
   </div>
+
+  <script type="text/javascript" src="scripts/script.js"></script>
 </body>
 </html>
