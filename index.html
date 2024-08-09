@@ -1,38 +1,31 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1"> <!-- displays site properly based on user's device -->
-
-
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@200..700&display=swap" rel="stylesheet">
-  <link rel="icon" type="image/png" sizes="32x32" href="./assets/images/favicon-32x32.png">
-  <script src="https://kit.fontawesome.com/d95f5d52a6.js" crossorigin="anonymous"></script>
-
-
-  <title>Frontend Mentor | Mortgage repayment calculator</title>
-
-  <link rel="stylesheet" type="text/css" href="stylesheets/global.css">
-
-  <!-- Feel free to remove these styles or customise in your own stylesheet 👍 -->
-  <style>
-    .attribution { font-size: 11px; text-align: center; }
-    .attribution a { color: hsl(228, 45%, 44%); }
-  </style>
-</head>
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- displays site properly based on user's device -->
+  
+    <link rel="icon" type="image/png" sizes="32x32" href="./assets/images/favicon-32x32.png">
+    <link rel="stylesheet" type="text/css" href="stylesheets/global.css">
+    
+    <title>Frontend Mentor | Mortgage repayment calculator</title>
+  
+    <!-- Feel free to remove these styles or customise in your own stylesheet 👍 -->
+    <style>
+      .attribution { font-size: 11px; text-align: center; }
+      .attribution a { color: hsl(228, 45%, 44%); }
+    </style>
+  </head>
 <body>
   <main>
       <section>
         <form id="form" action="">
           <div>
             <h3>Mortgage Calculator</h3>
-            <h5>Clear All</h5>
+            <h5 id="clearAll">Clear All</h5>
           </div>
           <div>
               <span>Mortgage Amount</span>
-              <i class="fa fa-user"></i>
+              <i id="icon">$</i>
               <input id="mortgageAmount" class="input-icon-left" type="number"></input>
               <span id="mortgageAmount_error"></span>
           </div>
@@ -40,17 +33,17 @@
             <div>
               <span>Mortgage term</span>
               <input id="mortgageTerm" class="input-icon-right" type="number">
-              <span>years</span>
+              <span id="icon">years</span>
               <span id="mortgageTerm_error"></span>
             </div>
             <div>
               <span>Interest Rate</span>
               <input id="interestRate" class="input-icon-right" type="float">
-              <span>%</span>
+              <span id="icon">%</span>
               <span id="interestRate_error"></span>
             </div>
           </div>
-          <div>
+          <div class="radio-group">
             <span>Mortgage Type</span>
                 <div class="input-radio">
                   <label for="Repayment">
@@ -64,11 +57,7 @@
                     Interest Only
                   </label>
                 </div>
-                <span style="display: inline-block;
-                font-size: 10px;
-                color:red;
-                height: 8px;
-                line-height: 0;">This field is required</span>
+                <span id="mortgageType_error"></span>
             </div>
           </div>
             <button type="submit"> 
@@ -78,8 +67,8 @@
         </form>
       </section>
       <section class="results">
-        <h3>Your results</h3>
-        <h5>Your results are shown below based on the information you provided. To adjust the results, edit the form and click "calculate repayments" again.</h5>
+        <h1>Your results</h3>
+        <h3>Your results are shown below based on the information you provided. To adjust the results, edit the form and click "calculate repayments" again.</h5>
         <div>
           <h5>Your monthly repayments</h5>
           <h2>£ 1,797.74</h2>

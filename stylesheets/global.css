@@ -6,7 +6,16 @@
 }
 
 html, body, #root {
-  font-family: "Oswald";
+  font-family: "Plus Jakarta Sans", sans-serif;
+  --lime: hsl(61, 70%, 52%);
+  --red: hsl(4, 69%, 50%);
+
+  --white: hsl(0, 0%, 100%);
+  --slate-100: hsl(202, 86%, 94%);
+  --slate-300: hsl(203, 41%, 72%);
+  --slate-500: hsl(200, 26%, 54%);
+  --slate-700: hsl(200, 24%, 40%);
+  --slate-900: hsl(202, 55%, 16%);
 }
 
 
@@ -28,11 +37,11 @@ main {
   gap: 10px;
   @media only screen and (min-width: 940px) {
    gap: 0;
-   background-color: aquamarine; 
+   background-color: var(--slate-100); 
   }
   
   section {
-    background-color: #fff;
+    background-color: var(--white);
     display: flex;
     flex-wrap: wrap;
     flex-direction: column;
@@ -59,28 +68,41 @@ main {
       @media only screen and (min-width: 940px) {
         max-width: 300px;
         height: 450px;
-        gap: 16px;
 
         .right-icon-container {
           flex-direction: row;
-          gap: 10px;
           div {
             width: 50%;
             flex-direction: column;
             height: 76px;
+            position: relative;
           }
         }
        }
 
+       .right-icon-container {
+        gap: 20px;
+      }
+
        #mortgageAmount_error,
        #mortgageTerm_error,
-       #interestRate_error,
-       #mortgageType_error {
-        display: inline-block;
+       #interestRate_error {
+       font-size: 10px;
+       color:red;
+       position: absolute;
+       top: 65px;
+       left: 0;
+      }
+      #mortgageType_error {
+        position: absolute;
         font-size: 10px;
         color:red;
-        height: 8px;
-       }
+        top: 139px;
+      }
+
+      .radio-group {
+        margin-bottom: 16px;
+      }
       
       label {
         display: inline-block;
@@ -89,19 +111,42 @@ main {
         width: 100%;  
       }
 
-      .input-radio:checked {
-        background:#222
+      label:has(> input:checked) {
+        background-color: rgb(255, 255, 204);
+      }
+
+      input[type="radio"] {
+        margin-right: 10px;
       }
 
       .input-radio {
-        border: 1px solid #ccc;
+        border: 1px solid var(--slate-100);
         border-radius: 5px;
         /* accent-color: yellow; */
         filter: brightness(0.8);
         margin: 10px 0;
+        position: relative;
+      }
+
+      .input-radio:hover {
+        border: 1px solid var(--lime);
+      }
+
+      .input-radiol:has(> input:checked)::after {
+        position: absolute;
+        top: 12px;
+        content: '';
+        left: 6px;
+        width: 17px;
+        height: 17px;
+        border: 2px solid black;
+        border-radius: 40px;
+        background-color: transparent;
+        display: inherit;
       }
 
       .input-radio > label:hover {
+        background-color: var(--lime);
         cursor: pointer;
       }
 
@@ -113,7 +158,7 @@ main {
         border-width: 1px;
         border-color: transparent;
         padding: 10px;
-        background-color: #FFDB58;
+        background-color: var(--lime);
         color: #001d35;
         font-weight: bold;
         img {
@@ -145,11 +190,11 @@ main {
         position: absolute;
         font-size: 12px;
         left: 1px;
-        bottom: 17px;
+        bottom: 9px;
         color: grey;
         border-top-right-radius: 2px;
         border-bottom-right-radius: 2px;
-        background-color: aquamarine;
+        background-color: var(--slate-100);
         height: 31px;
         text-align: center;
         padding: 10px 11px;
@@ -176,19 +221,21 @@ main {
        .input-icon-right + span {
         position: absolute;
         right: 1px;
-        bottom: 32px;
+        bottom: 9px;
         color: gray;
         border-top-right-radius: 2px;
         border-bottom-right-radius: 2px;
-        background-color: aquamarine;
-        height: 32.5px;
-        @media only screen and (min-width: 940px) {
-          bottom: 12px;
-         }
+        background-color: var(--slate-100);
+        height: 31px;
         text-align: center;
         padding: 10px 11px;
         line-height: 13px;
         font-size: 12px;
+
+        @media only screen and (min-width: 940px) {
+          position: absolute;
+          bottom: 18px
+         }
       }
       
       input {
@@ -199,7 +246,7 @@ main {
 
   .results {
     background-color: #1e4c73;
-    color: white;
+    color: var(--white);
     gap: 20px;
 
     @media only screen and (min-width: 940px) {
@@ -209,8 +256,12 @@ main {
       left: -40px;
      }
 
+    h3 {
+      color: var(--slate-500)
+    }
+
     h2 {
-      color: yellow
+      color: var(--lime)
     }
 
     h5 {
@@ -223,7 +274,7 @@ main {
       background-color: #001d35;
       padding: 10px;
       border-radius: 8px;
-      border-top-color: yellow;
+      border-top-color: var(--lime);
       border-bottom-color: transparent;
       border-left-color: transparent;
       border-right-color: transparent;
@@ -233,7 +284,7 @@ main {
 
       .separator {
         height: 1px;
-        background-color: #fff;
+        background-color: var(--white);
         width: 100%;
       }
     }
