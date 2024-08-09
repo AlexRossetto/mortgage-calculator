@@ -66,15 +66,20 @@
             </button>
         </form>
       </section>
-      <section class="results">
+      <section id="empty-results" class="empty-results">
+        <img src = "./assets/images/illustration-empty.svg" alt="empty-svg"/>
+        <h1>Results shown here </h3>
+        <h4>Complete the form and click "calculate repayments" to see what your monthly repayments would be.</h4>
+      </section>
+      <section id="results" class="results">
         <h1>Your results</h3>
         <h3>Your results are shown below based on the information you provided. To adjust the results, edit the form and click "calculate repayments" again.</h5>
         <div>
           <h5>Your monthly repayments</h5>
-          <h2>£ 1,797.74</h2>
+          <h2 id="monthlyResult">£ 1,797.74</h2>
           <div class="separator"></div>
           <h5>Total you'll repay over the term</h5>
-          <h4>£ 539,322.94</h4>
+          <h4 id="repayResult">£ 539,322.94</h4>
         </div>
       </section>
   </main>
