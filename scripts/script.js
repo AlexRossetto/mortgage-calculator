@@ -22,12 +22,11 @@ const resetValues = () => {
     radio.checked = false;
   })
   mortgageTypeErrorElement.innerText = ''
-  
-  icons.forEach((icon) => {
-    icon.style.color = 'black';
-    icon.style.background = 'var(--slate-100)';
-  })
 
+  mortgageAmount.classList.remove('error');
+  interestRate.classList.remove('error');
+  mortgageTerm.classList.remove('error');
+  
   document.getElementById('empty-results').style.display = 'flex';
   document.getElementById('results').style.display = 'none';
 }
@@ -37,31 +36,17 @@ const findSelected = () => {
   return selected;
 }
 
-const setColors = (event, field) => {
-  if(event === 'error') {
-    icons.forEach((icon, idx) => {
-      if(field.includes(idx)) {
-        icon.style.color = 'white';
-        icon.style.background = 'var(--red)';
-      }
-    })
-  }
-}
-
 
 const calcMortgage = () => {
   let monthlyPayment = 0;
   let totalRepayment = 0;
-  
+  const rate = interestRate.value / 100  
+  const monthlyRate = rate / 12
+  const n = mortgageTerm.value * 12
+
   const mortgageTypeElement = findSelected();
   
   if(mortgageTypeElement.value === 'Repayment') {
-    const rate = interestRate.value / 100
-    const monthlyRate = rate / 12
-    const n = mortgageTerm.value * 12
-
-    console.log(interestRate.value)
-    console.log(mortgageTerm.value)
 
     monthlyPayment = (mortgageAmount.value * monthlyRate) / (1 - Math.pow((1 + monthlyRate), 
     - n));
@@ -88,22 +73,24 @@ form.addEventListener('submit', (e) => {
 
   if (mortgageAmount.value === '' || mortgageAmount.value === null || mortgageAmount.value === 0) {
     mortgageAmountErrorElement.innerText = "This field is required"
+    mortgageAmount.classList.add('error');
     fields.push(0)
   }
   if (mortgageTerm.value === '' || mortgageTerm.value === null || mortgageTerm.value === 0) {
-    fields.push(1)
     mortgageTermErrorElement.innerText = "This field is required"
+    mortgageTerm.classList.add('error');
+    fields.push(1)
   }
   if (interestRate.value === '' || interestRate.value === null || interestRate.value === 0) {
-    fields.push(2)
     interestRateErrorElement.innerText = "This field is required"
+    interestRate.classList.add('error');
+    fields.push(2)
   }
 
   if(!selectedRadio) {
     mortgageTypeErrorElement.innerText = "This field is required"
   }
-  
-  if(fields.length) setColors('error',fields);
+
 
   if(!fields.length && selectedRadio) {
     const mortgage = calcMortgage();
